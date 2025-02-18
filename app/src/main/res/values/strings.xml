@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Evaluación</string>
+    <string name="welcome">Bienvenido</string>
+    <string name="instructions">Seleccione la opción de su preferencia</string>
+    <string name="name">Nombre:</string>
+    <string name="no_cont">Número de control:</string>
+
+    <string name="req_name">Ingrese su nombre</string>
+    <string name="req_pass">Ingrese su contraseña</string>
+
+    <string name="video1_description">Duck!</string>
+    <string name="video2_description">Patrick!</string>
+    <string name="video3_description">Dance!</string>
+
+    <string name="btn_next">Siguiente</string>
+    <string name="btn_exit">Salir</string>
+    <string name="btn_closeSesion">Cerrar Sesión</string>
+    <string name="btn_info">Acerca de...</string>
+    <string name="btn_TV">Televisión</string>
+    <string name="btn_galery">Galería</string>
+    <string name="btn_cam">Cámara</string>
+    <string name="btn_lantern">Linterna</string>
+    <string name="btn_tab">Pestañas</string>
+    <string name="btn_close">Cerrar</string>
+    <string name="btn_back">Regresar a Menú</string>
+
+</resources>
