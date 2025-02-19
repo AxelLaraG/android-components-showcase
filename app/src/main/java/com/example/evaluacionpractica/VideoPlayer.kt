@@ -2,6 +2,8 @@ package com.example.evaluacionpractica
 
 import android.net.Uri
 import android.os.Bundle
+import android.view.View
+import android.widget.ImageButton
 import android.widget.MediaController
 import android.widget.Toast
 import android.widget.VideoView
@@ -12,23 +14,12 @@ class VideoPlayer : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_video_player)
 
+        val btnReturn = findViewById<ImageButton>(R.id.btnBack)
         val videoPlayer = findViewById<VideoView>(R.id.videoView)
-
         val videoRes = intent.getIntExtra("video_resource",-1)
 
-        videoPlayer.setOnPreparedListener { mp ->
-            val videoRatio = mp.videoWidth.toFloat() / mp.videoHeight.toFloat()
-            val screenRatio = videoPlayer.width.toFloat() / videoPlayer.height.toFloat()
-
-            if (videoRatio > screenRatio) {
-                val params = videoPlayer.layoutParams
-                params.height = (videoPlayer.width / videoRatio).toInt()
-                videoPlayer.layoutParams = params
-            } else {
-                val params = videoPlayer.layoutParams
-                params.width = (videoPlayer.height * videoRatio).toInt()
-                videoPlayer.layoutParams = params
-            }
+        btnReturn.setOnClickListener {
+            finish()
         }
 
         if (videoRes != -1) {
@@ -37,6 +28,12 @@ class VideoPlayer : AppCompatActivity() {
 
             val mediaControl = MediaController(this)
             videoPlayer.setMediaController(mediaControl)
+            videoPlayer.setOnPreparedListener{
+                hideNotificationBar()
+            }
+            videoPlayer.setOnCompletionListener {
+                showNotificationBar()
+            }
 
             mediaControl.setAnchorView(videoPlayer)
 
@@ -45,6 +42,16 @@ class VideoPlayer : AppCompatActivity() {
             Toast.makeText(this, "Error: Video no encontrado", Toast.LENGTH_SHORT).show()
             finish()
         }
-
     }
+
+    private fun hideNotificationBar(){
+        window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_FULLSCREEN or
+                View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or
+                View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY)
+    }
+
+    private fun showNotificationBar(){
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_VISIBLE
+    }
+
 }

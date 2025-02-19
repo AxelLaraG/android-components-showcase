@@ -29,7 +29,7 @@
 
         <activity android:name=".MainMenu"/>
         <activity android:name=".MainTV"/>
-        <activity android:name=".VideoPlayer"/>
+        <activity android:name=".VideoPlayer" android:configChanges="orientation|screenSize"/>
 
     </application>
 

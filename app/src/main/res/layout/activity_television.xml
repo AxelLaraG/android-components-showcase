@@ -25,7 +25,7 @@
                 android:scaleType="centerCrop"
                 android:background="@android:color/darker_gray"
                 android:contentDescription="@string/video1_description"
-                android:layout_marginBottom="16dp" />
+                android:layout_margin="16dp"/>
 
             <ImageButton
                 android:id="@+id/video2"
@@ -34,7 +34,7 @@
                 android:scaleType="centerCrop"
                 android:background="@android:color/darker_gray"
                 android:contentDescription="@string/video2_description"
-                android:layout_marginBottom="16dp" />
+                android:layout_margin="16dp" />
 
             <ImageButton
                 android:id="@+id/video3"
@@ -43,7 +43,7 @@
                 android:scaleType="centerCrop"
                 android:background="@android:color/darker_gray"
                 android:contentDescription="@string/video3_description"
-                android:layout_marginBottom="16dp" />
+                android:layout_margin="16dp" />
 
         </LinearLayout>
     </ScrollView>
