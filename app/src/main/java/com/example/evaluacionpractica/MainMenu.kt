@@ -3,9 +3,9 @@ package com.example.evaluacionpractica
 import android.content.Context
 import android.content.Intent
 import android.hardware.camera2.CameraManager
-import androidx.appcompat.app.AppCompatActivity
+import android.net.Uri
 import android.os.Bundle
-import android.provider.MediaStore
+import android.os.Environment
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
@@ -13,10 +13,20 @@ import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.PopupWindow
 import android.widget.Toast
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.FileProvider
+import java.io.File
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class MainMenu : AppCompatActivity() {
 
+    private lateinit var cameraLauncher: ActivityResultLauncher<Uri>
+    private var photoUri: Uri? = null
     private var isFlashOn = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,7 +42,22 @@ class MainMenu : AppCompatActivity() {
         val btnTabs = findViewById<ImageButton>(R.id.btn_tab)
         val btnCam = findViewById<ImageButton>(R.id.btn_cam)
 
+        cameraLauncher = registerForActivityResult(ActivityResultContracts.TakePicture()) { success ->
+            if (success && photoUri != null) {
+                // Iniciar la actividad de la cámara con la foto capturada
+                val intent = Intent(this, MainCamera::class.java)
+                intent.putExtra("photoUri", photoUri.toString())
+                startActivity(intent)
+            }
+        }
+
+        btnTabs.setOnClickListener {
+            val intent = Intent(this, MainTabs::class.java)
+            startActivity(intent)
+        }
+
         btnCam.setOnClickListener {
+            capturePhoto()
         }
 
         btnInfo.setOnClickListener{
@@ -57,6 +82,28 @@ class MainMenu : AppCompatActivity() {
             startActivity(intent)
         }
 
+    }
+
+    private fun capturePhoto() {
+        val photoFile = createImageFile()
+        val uri = FileProvider.getUriForFile(
+            this,
+            "com.example.evaluacionpractica.fileprovider",
+            photoFile
+        )
+
+        photoUri = uri
+
+        photoUri?.let {
+            cameraLauncher.launch(it)
+        }
+    }
+
+
+    private fun createImageFile(): File {
+        val timeStamp: String = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())
+        val storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES)
+        return File.createTempFile("JPEG_${timeStamp}_", ".jpg", storageDir!!)
     }
 
     private fun flashOn (){

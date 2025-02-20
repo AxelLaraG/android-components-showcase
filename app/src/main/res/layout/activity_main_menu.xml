@@ -31,13 +31,15 @@
 
                 <ImageButton
                     android:id="@+id/btn_info"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_launcher_background"
+                    android:layout_width="129dp"
+                    android:layout_height="129dp"
+                    android:src="@drawable/me"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     android:layout_margin="16dp"
-                    android:contentDescription="@string/btn_info"/>
+                    android:contentDescription="@string/btn_info"
+                    android:scaleType="fitCenter"
+                    android:background="@drawable/rounded_button_pink"/>
 
                 <ImageButton
                     android:id="@+id/btn_tv"
@@ -87,12 +89,14 @@
 
                 <ImageButton
                     android:id="@+id/btn_tab"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_launcher_background"
+                    android:layout_width="129dp"
+                    android:layout_height="129dp"
+                    android:src="@drawable/tabs"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/btn_lantern"
-                    android:layout_margin="16dp"/>
+                    android:layout_margin="16dp"
+                    android:scaleType="fitCenter"
+                    android:background="@drawable/rounded_button_purple"/>
 
                 <ImageButton
                     android:id="@+id/btn_exit"

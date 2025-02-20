@@ -2,12 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-
     <uses-feature android:name="android.hardware.camera.flash" android:required="false"/>
 
     <uses-feature
         android:name="android.hardware.camera"
         android:required="false" />
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 
     <application
         android:allowBackup="true"
@@ -19,6 +21,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EvaluacionPractica"
         tools:targetApi="31">
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyBUxu2-yJMIIr8lja33ndk0fV0vBj-wZrI"/>
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.example.evaluacionpractica.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths"/>
+        </provider>
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -32,7 +48,8 @@
         <activity android:name=".MainTV"/>
         <activity android:name=".VideoPlayer" android:configChanges="orientation|screenSize"/>
         <activity android:name=".MainGallery" android:configChanges="orientation|screenSize"/>
-
+        <activity android:name=".MainCamera" android:configChanges="orientation|screenSize"/>
+        <activity android:name=".MainTabs" android:configChanges="orientation|screenSize"/>
     </application>
 
 </manifest>

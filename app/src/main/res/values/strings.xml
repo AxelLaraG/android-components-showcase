@@ -12,6 +12,7 @@
     <string name="video2_description">Patrick!</string>
     <string name="video3_description">Dance!</string>
 
+    <string name="btn_save">Guardar en la galería</string>
     <string name="btn_next">Siguiente</string>
     <string name="btn_exit">Salir</string>
     <string name="btn_closeSesion">Cerrar Sesión</string>
