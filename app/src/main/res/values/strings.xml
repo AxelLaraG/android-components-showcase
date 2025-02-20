@@ -23,5 +23,6 @@
     <string name="btn_tab">Pestañas</string>
     <string name="btn_close">Cerrar</string>
     <string name="btn_back">Regresar a Menú</string>
+    <string name="btn_float">Agregar imágenes</string>
 
 </resources>

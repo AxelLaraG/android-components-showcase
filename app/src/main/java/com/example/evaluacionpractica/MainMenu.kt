@@ -5,6 +5,7 @@ import android.content.Intent
 import android.hardware.camera2.CameraManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
@@ -22,10 +23,17 @@ class MainMenu : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_menu)
 
+
         val btnInfo = findViewById<ImageButton>(R.id.btn_info)
         val btnFlash = findViewById<ImageButton>(R.id.btn_lantern)
         val btnExit = findViewById<ImageButton>(R.id.btn_exit)
         val btnTV = findViewById<ImageButton>(R.id.btn_tv)
+        val btnGallery = findViewById<ImageButton>(R.id.btn_gallery)
+        val btnTabs = findViewById<ImageButton>(R.id.btn_tab)
+        val btnCam = findViewById<ImageButton>(R.id.btn_cam)
+
+        btnCam.setOnClickListener {
+        }
 
         btnInfo.setOnClickListener{
             showPopUp(it)
@@ -41,6 +49,11 @@ class MainMenu : AppCompatActivity() {
 
         btnTV.setOnClickListener {
             val intent = Intent(this, MainTV::class.java)
+            startActivity(intent)
+        }
+
+        btnGallery.setOnClickListener {
+            val intent = Intent(this, MainGallery::class.java)
             startActivity(intent)
         }
 

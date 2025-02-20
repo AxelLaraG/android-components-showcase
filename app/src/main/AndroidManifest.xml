@@ -4,6 +4,7 @@
 
 
     <uses-feature android:name="android.hardware.camera.flash" android:required="false"/>
+
     <uses-feature
         android:name="android.hardware.camera"
         android:required="false" />
@@ -27,9 +28,10 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".MainMenu"/>
+        <activity android:name=".MainMenu" android:configChanges="orientation|screenSize"/>
         <activity android:name=".MainTV"/>
         <activity android:name=".VideoPlayer" android:configChanges="orientation|screenSize"/>
+        <activity android:name=".MainGallery" android:configChanges="orientation|screenSize"/>
 
     </application>
 
